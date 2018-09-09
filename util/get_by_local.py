@@ -36,3 +36,7 @@ class GetByLocal:
                 return False
         else:
             return None
+
+
+if __name__ == '__main__':
+    g = GetByLocal(1)
