@@ -26,7 +26,7 @@ class UserLog:
         self.file_handle = logging.FileHandler(path, 'a', encoding='utf-8')
         # 添加日志格式
         formatter = logging.Formatter(
-            '%(asctime)s %(filename)s %(funcName)s[line:%(lineno)d] %(levelname)s %(message)s')
+            '%(asctime)s %(filename)s %(funcName)s[line:%(lineno)d] {%(levelname)s - %(message)s}')
         self.file_handle.setFormatter(formatter)
         # 给logger添加handler
         self.logger.addHandler(self.file_handle)
