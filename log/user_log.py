@@ -6,8 +6,8 @@ import time
 class UserLog:
     """日志级别等级CRITICAL > ERROR > WARNING > INFO > DEBUG"""
 
-    def __init__(self):
-        self.logger = logging.getLogger()
+    def __init__(self, logger=None):
+        self.logger = logging.getLogger(logger)
         self.logger.setLevel(logging.DEBUG)
 
         # 创建handler输出日志到控制台
@@ -24,9 +24,10 @@ class UserLog:
 
         # 创建handler输出日志到文件
         self.file_handle = logging.FileHandler(path, 'a', encoding='utf-8')
+        self.file_handle.setLevel(logging.INFO)
         # 添加日志格式
         formatter = logging.Formatter(
-            '%(asctime)s %(filename)s %(funcName)s[line:%(lineno)d] {%(levelname)s - %(message)s}')
+            '%(asctime)s %(filename)s %(funcName)s[line:%(lineno)d] %(levelname)s %(message)s')
         self.file_handle.setFormatter(formatter)
         # 给logger添加handler
         self.logger.addHandler(self.file_handle)
@@ -37,12 +38,3 @@ class UserLog:
     def close_handle(self):
         self.logger.removeHandler(self.file_handle)
         self.file_handle.close()
-
-
-if __name__ == '__main__':
-    u = UserLog()
-    log = u.get_logger()
-    log.debug("调试")
-    log.error("只是错误")
-    log.critical("完蛋了")
-    u.close_handle()

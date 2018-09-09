@@ -1,11 +1,12 @@
 import configparser
 from log.user_log import UserLog
 
+log = UserLog()
+logger = log.get_logger()
+
 
 class ReadIni:
     def __init__(self, file_path=None):
-        self.log = UserLog()
-        self.logger = self.log.get_logger()
         if file_path == None:
             file_path = '../config/LocalElement.ini'
         self.data = self.read_ini(file_path)
@@ -25,12 +26,8 @@ class ReadIni:
         try:
             value = self.data.get(section, option)
         except Exception as e:
-            self.logger.error(e)
-            self.log.close_handle()
+            logger.debug(e)
             value = None
+        finally:
+            log.close_handle()
         return value
-
-
-if __name__ == '__main__':
-    r = ReadIni()
-    r.get_value('mine_element', 'user_image1')

@@ -1,13 +1,6 @@
-import os
+import configparser
 
-# path_now = os.getcwd()
-# print(path_now)
-# path = path_now.replace('debug','case')
-# print(path)
-# # parh = os.path.join(os.getcwd(), 'debug')
-# # print(parh)
-a = "dadad"
-b = [a]
-b1 =(a,)
+a = configparser.ConfigParser()
+a.read("/Volumes/SAMSUNG/FF_RUSH/jiazhangbang/config/LocalElement.ini")
+b = a.get('mine_element', 'user_image1')
 print(b)
-print(b1)
