@@ -2,6 +2,7 @@ import time
 from appium import webdriver
 from util.get_by_local import GetByLocal
 from log.user_log import UserLog
+from business.mine_business import MineBusiness
 
 log = UserLog()
 logger = log.get_logger()
@@ -50,5 +51,6 @@ class TestStart:
 
 if __name__ == '__main__':
     t = TestStart()
+    m = MineBusiness()
     print(t.aa())
     t.quit()

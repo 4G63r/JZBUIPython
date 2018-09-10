@@ -1,5 +1,8 @@
+from log.user_log import UserLog
 from util.get_by_local import GetByLocal
-from base.base_driver import BaseDriver
+
+log = UserLog()
+logger = log.get_logger()
 
 
 class MinePage:
@@ -10,11 +13,27 @@ class MinePage:
 
     def get_mine_tab_element(self):
         """获取我的tab元素信息"""
-        return self.get_by_local.get_element('mine_element', 'mine_tab')
+        try:
+            element = self.get_by_local.get_element('mine_element1', 'mine_tab1')
+            if element == None:
+                logger.info("section or option not right. Please check it.")
+        except Exception as e:
+            logger.info(e)
+        finally:
+            log.close_handle()
+        return element
 
     def get_user_image_element(self):
         """获取头像元素信息"""
-        return self.get_by_local.get_element('mine_element', 'user_image')
+        try:
+            element = self.get_by_local.get_element('mine_element', 'user_image')
+            if element == None:
+                logger.info("section or option not right. Please check it.")
+        except Exception as e:
+            logger.info(e)
+        finally:
+            log.close_handle()
+        return element
 
     def get_user_name_element(self):
         """获取用户名元素信息"""

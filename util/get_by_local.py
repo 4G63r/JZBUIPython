@@ -25,14 +25,15 @@ class GetByLocal:
         else:
             return None
 
-    def isElementExist(self, section, option):
-        """判断元素是否存在"""
-        local_by = self.get_element(section, option)
-        if local_by:
-            try:
-                local_by
-                return True
-            except:
-                return False
-        else:
-            return None
+
+def isElementExist(self, section, option):
+    """判断元素是否存在"""
+    local_by = self.get_element(section, option)
+    if local_by:
+        try:
+            local_by
+            return True
+        except:
+            return False
+    else:
+        return None

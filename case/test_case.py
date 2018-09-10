@@ -4,11 +4,14 @@ import HTMLTestRunner
 import HTMLTestRunnerNew
 import multiprocessing
 import time
+
+import ddt as ddt
+
 from util.write_user_command import WriteUserCommand
 from business.search_business import SearchBusiness
 from business.mine_business import MineBusiness
 from util.server import Server
-from log.user_log import UserLog
+from log import user_log
 
 
 class ParameTestCase(unittest.TestCase):
@@ -17,12 +20,10 @@ class ParameTestCase(unittest.TestCase):
         global parames
         parames = parame
 
-
+@ddt.ddt
 class CaseTest(ParameTestCase):
     @classmethod  # 容器 java里叫注解
     def setUpClass(cls):
-        cls.log = UserLog()
-        cls.logger = cls.log.get_logger()
         print("setupclass----->", parames)
         # cls.search_business = SearchBusiness(i)
         cls.mine_business = MineBusiness(i)
@@ -34,7 +35,12 @@ class CaseTest(ParameTestCase):
     def test_01(self):
         '''成功进入搜索页面'''
         flag = self.mine_business.go_mine_pass()
-        self.assertTrue(flag, msg="进入搜索页面测试不通过")
+        try:
+            self.assertTrue(flag, msg="进入搜索页面测试不通过")
+        except :
+
+            user_log.logger("")
+
 
     def test_02(self):
         '''搜索功能模块的用例2'''

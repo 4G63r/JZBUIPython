@@ -10,9 +10,9 @@ def get_driver():
     capabilities = {
         "platformName": "Android",
         # "automationName": "UiAutomator2",
-        "deviceName": "ac05b72c",
+        "deviceName": "192.168.56.101:5555",
         # "deviceName": "83e54a4c384e4a31",
-        "app": "/Users/songxiao/autom/apk/JZB_7.0.6-website-debug.apk",
+        "app": "/Volumes/SAMSUNG/FF_RUSH/jiazhangbang/data/JZB_7.0.8-website-release.apk",
         # "appWaitActivity": "com.eduu.bang.app.SplashActivity",  # 需要等待切换activity(真机常见问题)
         "noReset": "true",  # 不用每次启动都重置应用
         "unicodeKeyboard": "true",  # 使用unicode编码方式发送字符串
@@ -27,7 +27,8 @@ def get_size():
     size = driver.get_window_size()  # 返回字典{'height': 2560, 'width': 1440}
     height = size['height']  # y
     width = size['width']  # x
-    return width, height  # 返回元祖(1440, 2560)
+    print(size)
+    # return width, height  # 返回元祖(1440, 2560)
 
 
 def swipe_left():
@@ -141,21 +142,22 @@ def get_toast():
 
 driver = get_driver()  # 全局
 # countdown_time()
-time.sleep(8)
-flag1 = False
-flag2 = False
-list = []
-tabs = ['内容', '课程', '用户']
-titles = ['热门搜索', '搜索历史']
-driver.find_element_by_id('com.eduu.bang:id/etSearch').click()
-elements = driver.find_elements_by_id('com.eduu.bang:id/tv_tab_title')
-for i in elements:
-    list.append(i.text)
-print(list)
-for i in tabs:
-    if i == list:
-        flag1 = True
-print(flag1)
+time.sleep(6)
+get_size()
+# flag1 = False
+# flag2 = False
+# list = []
+# tabs = ['内容', '课程', '用户']
+# titles = ['热门搜索', '搜索历史']
+# driver.find_element_by_id('com.eduu.bang:id/etSearch').click()
+# elements = driver.find_elements_by_id('com.eduu.bang:id/tv_tab_title')
+# for i in elements:
+#     list.append(i.text)
+# print(list)
+# for i in tabs:
+#     if i == list:
+#         flag1 = True
+# print(flag1)
 # for i in self.search_handle.get_hot_history_texts():
 #     if i in titles:
 #         flag2 = True
