@@ -18,8 +18,3 @@ class DosCmd:
     def execute_cmd(self, command):
         """不需要收集直接执行命令"""
         os.system(command)
-
-
-if __name__ == '__main__':
-    dos_cmd = DosCmd()
-    dos_cmd.execute_cmd("adb devices")

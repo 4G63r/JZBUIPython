@@ -5,7 +5,6 @@ import HTMLTestRunnerNew
 import multiprocessing
 import time
 
-import ddt as ddt
 
 from util.write_user_command import WriteUserCommand
 from business.search_business import SearchBusiness
@@ -20,7 +19,6 @@ class ParameTestCase(unittest.TestCase):
         global parames
         parames = parame
 
-@ddt.ddt
 class CaseTest(ParameTestCase):
     @classmethod  # 容器 java里叫注解
     def setUpClass(cls):

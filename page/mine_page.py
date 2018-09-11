@@ -1,5 +1,5 @@
-from log import user_log
 from util.get_by_local import GetByLocal
+from log import user_log
 
 logger = user_log.logger
 

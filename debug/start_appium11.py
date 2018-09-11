@@ -3,7 +3,7 @@ from appium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from util.get_by_local import GetByLocal
-from page.mine_page import MinePage
+from handle.mine_handle import MineHandle
 
 
 def get_driver():
@@ -145,9 +145,8 @@ def get_toast():
 driver = get_driver()  # 全局
 # countdown_time()
 time.sleep(6)
-m = MinePage(driver)
-m.get_mine_tab_element().click()
-m.get_user_image_element().click()
+h = MineHandle(driver)
+h.click_mine_tab_element()
 
 time.sleep(3)
 driver.quit()
