@@ -1,9 +1,10 @@
-import os
-
-
 # 需求：封装一个可以复用的类，作用是输入终端命令就能拿到想要的返回值
 # 比如调用这个类时传入"adb devices"就能拿到设备名
 # 提示：os.popen(command)用os下面的popen()函数进行逐步封装
+
+import os
+
+
 class DosCmd:
     def execute_cmd_result(self, command):
         """收集设备信息"""
