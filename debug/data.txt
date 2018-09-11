@@ -1,0 +1,6 @@
+<class 'str'> ['1']
+<class 'float'> [6.0]
+<class 'dict'> [{'key1': 'a', 'key2': 3}]
+<class 'int'> [1, 3]
+<class 'list'> [[1, 2]]
+<class 'tuple'> [(3, 'a')]
