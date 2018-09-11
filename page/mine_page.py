@@ -1,8 +1,7 @@
-from log.user_log import UserLog
+from log import user_log
 from util.get_by_local import GetByLocal
 
-log = UserLog()
-logger = log.get_logger()
+logger = user_log.logger
 
 
 class MinePage:
@@ -11,29 +10,24 @@ class MinePage:
     def __init__(self, driver):
         self.get_by_local = GetByLocal(driver)
 
+    def aaa(self, element):
+        if element == None:
+            logger.error("section or option not right. Please check it.")
+        else:
+            try:
+                element
+            except Exception as e:
+                logger.error(e)
+        return element
+
     def get_mine_tab_element(self):
         """获取我的tab元素信息"""
-        try:
-            element = self.get_by_local.get_element('mine_element1', 'mine_tab1')
-            if element == None:
-                logger.info("section or option not right. Please check it.")
-        except Exception as e:
-            logger.info(e)
-        finally:
-            log.close_handle()
-        return element
+        element = self.get_by_local.get_element('mine_element1', 'mine_tab')
+        return self.aaa(element)
 
     def get_user_image_element(self):
         """获取头像元素信息"""
-        try:
-            element = self.get_by_local.get_element('mine_element', 'user_image')
-            if element == None:
-                logger.info("section or option not right. Please check it.")
-        except Exception as e:
-            logger.info(e)
-        finally:
-            log.close_handle()
-        return element
+        return self.get_by_local.get_element('mine_element', 'user_image')
 
     def get_user_name_element(self):
         """获取用户名元素信息"""
@@ -130,3 +124,8 @@ class MinePage:
     def get_setting_button_element(self):
         """获取设置元素信息"""
         return self.get_by_local.get_element('mine_element', 'setting_button')
+
+
+if __name__ == '__main__':
+    m = MinePage(driver=1)
+    m.aaa('mine_element1', 'mine_tab')

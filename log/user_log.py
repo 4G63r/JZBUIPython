@@ -5,7 +5,7 @@ import time
 # 日志级别等级CRITICAL > ERROR > WARNING > INFO > DEBUG
 
 logger = logging.getLogger()
-logger.setLevel(logging.INFO)
+logger.setLevel(logging.DEBUG)
 
 # 创建handler输出日志到控制台
 # console = logging.StreamHandler()

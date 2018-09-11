@@ -10,8 +10,8 @@ def get_driver():
     capabilities = {
         "platformName": "Android",
         # "automationName": "UiAutomator2",
-        "deviceName": "192.168.56.101:5555",
-        # "deviceName": "83e54a4c384e4a31",
+        # "deviceName": "192.168.56.101:5555",
+        "deviceName": "83e54a4c384e4a31",
         "app": "/Volumes/SAMSUNG/FF_RUSH/jiazhangbang/data/JZB_7.0.8-website-release.apk",
         # "appWaitActivity": "com.eduu.bang.app.SplashActivity",  # 需要等待切换activity(真机常见问题)
         "noReset": "true",  # 不用每次启动都重置应用
@@ -143,7 +143,7 @@ def get_toast():
 driver = get_driver()  # 全局
 # countdown_time()
 time.sleep(6)
-get_size()
+driver.find_element_by_android_uiautomator('new UiSelector().text("我")').click()
 # flag1 = False
 # flag2 = False
 # list = []

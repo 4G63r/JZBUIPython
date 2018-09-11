@@ -1,7 +1,4 @@
 import configparser
-from log import user_log
-
-logger = user_log.logger
 
 
 class ReadIni:
@@ -24,12 +21,6 @@ class ReadIni:
         """
         try:
             value = self.data.get(section, option)
-        except Exception as e:
-            logger.info(e)
+        except:
             value = None
         return value
-
-
-if __name__ == '__main__':
-    r = ReadIni()
-    print(r.get_value('mine_element1', 'mine_tab'))
