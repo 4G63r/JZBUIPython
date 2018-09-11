@@ -9,7 +9,6 @@ class ReadIni:
 
     def read_ini(self, file_path):
         """读取配置文件"""
-        # 创建一个读取配置文件的实例
         read_ini = configparser.ConfigParser()
         read_ini.read(file_path)
         return read_ini

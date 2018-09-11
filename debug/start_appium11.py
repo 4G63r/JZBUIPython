@@ -3,6 +3,7 @@ from appium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from util.get_by_local import GetByLocal
+from page.mine_page import MinePage
 
 
 def get_driver():
@@ -11,7 +12,8 @@ def get_driver():
         "platformName": "Android",
         # "automationName": "UiAutomator2",
         # "deviceName": "192.168.56.101:5555",
-        "deviceName": "83e54a4c384e4a31",
+        # "deviceName": "83e54a4c384e4a31",
+        "deviceName": "ac05b72c",
         "app": "/Volumes/SAMSUNG/FF_RUSH/jiazhangbang/data/JZB_7.0.8-website-release.apk",
         # "appWaitActivity": "com.eduu.bang.app.SplashActivity",  # 需要等待切换activity(真机常见问题)
         "noReset": "true",  # 不用每次启动都重置应用
@@ -143,26 +145,9 @@ def get_toast():
 driver = get_driver()  # 全局
 # countdown_time()
 time.sleep(6)
-driver.find_element_by_android_uiautomator('new UiSelector().text("我")').click()
-# flag1 = False
-# flag2 = False
-# list = []
-# tabs = ['内容', '课程', '用户']
-# titles = ['热门搜索', '搜索历史']
-# driver.find_element_by_id('com.eduu.bang:id/etSearch').click()
-# elements = driver.find_elements_by_id('com.eduu.bang:id/tv_tab_title')
-# for i in elements:
-#     list.append(i.text)
-# print(list)
-# for i in tabs:
-#     if i == list:
-#         flag1 = True
-# print(flag1)
-# for i in self.search_handle.get_hot_history_texts():
-#     if i in titles:
-#         flag2 = True
-# if flag1 == flag2:
-#     return True
+m = MinePage(driver)
+m.get_mine_tab_element().click()
+m.get_user_image_element().click()
 
-time.sleep(6)
+time.sleep(3)
 driver.quit()
