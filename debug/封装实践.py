@@ -1,9 +1,9 @@
 import os
 
 
-# os.system()不能收集结果
-# os.popen()可以收集结果
-# ['List of devices attached\n', 'ac05b72c\tdevice\n', '\n']
+# 需求：封装一个可以复用的类，作用是输入终端命令就能拿到想要的返回值
+# 比如调用这个类时传入"adb devices"就能拿到设备名
+# 提示：os.popen(command)用os下面的popen()函数进行逐步封装
 class DosCmd:
     def execute_cmd_result(self, command):
         """收集设备信息"""
@@ -12,7 +12,7 @@ class DosCmd:
         for i in result:
             if 'List of devices' in i or i == '\n':
                 continue
-            result_list.append(i.strip('\n'))
+            result_list.append(i.strip('\n').split('\t')[0])
         return result_list
 
     def execute_cmd(self, command):
@@ -22,4 +22,4 @@ class DosCmd:
 
 if __name__ == '__main__':
     dos_cmd = DosCmd()
-    dos_cmd.execute_cmd("adb devices")
+    print(dos_cmd.execute_cmd_result("adb devices"))
