@@ -10,7 +10,7 @@ class GetByLocal:
         self.read_ini = ReadIni()
 
     def element_wait(self, section, option, sec=5):
-        """等待元素显示"""
+        """显示等待元素"""
         local = self.read_ini.get_value(section, option)
         if '>' not in local:
             raise NameError("Positioning syntax errors, lack of '->'.")
@@ -51,13 +51,3 @@ class GetByLocal:
         else:
             raise NameError("Please enter the correct targeting elements,'id','name','class','xpath'.")
         return element
-
-    def isElementExist(self, section, option):
-        """判断元素是否存在"""
-        flag = False
-        try:
-            self.get_element(section, option)
-            flag = True
-        except:
-            flag = False
-        return flag
