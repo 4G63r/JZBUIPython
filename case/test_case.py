@@ -10,7 +10,7 @@ from util.write_user_command import WriteUserCommand
 from business.search_business import SearchBusiness
 from business.mine_business import MineBusiness
 from util.server import Server
-from log import user_log
+from log import my_log
 
 
 class ParameTestCase(unittest.TestCase):
@@ -20,7 +20,7 @@ class ParameTestCase(unittest.TestCase):
         parames = parame
 
 class CaseTest(ParameTestCase):
-    @classmethod  # 容器 java里叫注解
+    @classmethod
     def setUpClass(cls):
         print("setupclass----->", parames)
         # cls.search_business = SearchBusiness(i)
@@ -37,7 +37,7 @@ class CaseTest(ParameTestCase):
             self.assertTrue(flag, msg="进入搜索页面测试不通过")
         except :
 
-            user_log.logger("")
+            my_log.logger("")
 
 
     def test_02(self):

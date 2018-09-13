@@ -5,9 +5,9 @@ import HTMLTestRunnerNew
 import time
 from debug.base_d import Base_d
 from debug.business_d import MineBusiness
-from log import user_log
+from log import my_log
 
-logger = user_log.logger
+logger = my_log.logger
 
 
 class CaseTest(unittest.TestCase):
@@ -27,7 +27,7 @@ class CaseTest(unittest.TestCase):
             self.assertTrue(flag, msg="进入搜索页面测试不通过")
         except:
 
-            user_log.logger("")
+            my_log.logger("")
 
     def tearDown(self):
         print('this is teardown')

@@ -1,9 +1,9 @@
 from handle.mine_handle import MineHandle
 from util.get_by_local import GetByLocal
 from base.base_driver import BaseDriver
-from log import user_log
+from log import my_log
 
-logger = user_log.logger
+logger = my_log.logger
 
 
 class MineBusiness:
