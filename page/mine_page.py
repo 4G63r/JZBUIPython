@@ -1,4 +1,5 @@
 from util.get_by_local import GetByLocal
+from util.read_ini import ReadIni
 
 
 class MinePage:
@@ -6,11 +7,14 @@ class MinePage:
 
     def __init__(self, driver):
         self.get_by_local = GetByLocal(driver)
+        self.read_ini = ReadIni()
 
     def wait_element(self, section, option):
+        """元素等待&获取元素信息"""
+        value = self.read_ini.get_value(section, option)
         self.get_by_local.element_wait(section, option)
         el = self.get_by_local.get_element(section, option)
-        return el
+        return value, el
 
     def get_mine_tab_element(self):
         """获取我的tab元素信息"""
