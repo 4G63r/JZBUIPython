@@ -33,7 +33,8 @@ class BaseDriver:
             return driver
         except Exception:
             logger.info(
-                "{0} Start Android device <{1}>, Spend {2} seconds".format(fail, device, time.time() - start_t))
+                "{0} Unable to Start Android device <{1}>, Spend {2} seconds".format(fail, device,
+                                                                                     time.time() - start_t))
 
     def ios_driver(self):
         pass
