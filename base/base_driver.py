@@ -35,6 +35,7 @@ class BaseDriver:
             logger.info(
                 "{0} Unable to Start Android device <{1}>, Spend {2} seconds".format(fail, device,
                                                                                      time.time() - start_t))
+            raise
 
     def ios_driver(self):
         pass
