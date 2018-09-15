@@ -1,56 +1,34 @@
 from page.login_page import LoginPage
+from util.element_action import ElementAction
 
 
 class LoginHandle:
     """操作登录页面的元素"""
 
-    def __init__(self):
-        self.login_page = LoginPage()
+    def __init__(self, driver):
+        self.login_page = LoginPage(driver)
+        self.ea = ElementAction(driver)
 
-    def send_username(self, user):
-        # 输入用户名
-        self.login_page.get_username_element().send_keys(user)
+    def input_phone(self):
+        """输入手机号"""
+        self.ea.clear_input(self.login_page.get_phone_input_element(), '13439075603')
 
-    def send_passwd(self, passwd):
-        # 输入密码
-        self.login_page.get_passwd_element().send_keys(passwd)
+    def get_login_title(self):
+        """获取登录页面标题文案"""
+        return self.ea.get_text(self.login_page.get_loginRegister_title_element())
 
-    def click_login_button(self):
-        # 点击登录按钮
-        self.login_page.get_login_button_element().click()
+    def click_sendMsgCode_btn(self):
+        """点击发送验证码按钮"""
+        self.ea.click(self.login_page.get_sendMsgCode_btn_element())
 
-    def click_register(self):
-        # 点击注册按钮
-        self.login_page.get_register_element().click()
+    def get_msg_title(self):
+        """获取输入验证码页面标题文案"""
+        return self.ea.get_text(self.login_page.get_msg_title_element())
 
-    def click_forget_passwd(self):
-        # 点击找回密码按钮
-        self.login_page.get_forget_passwd_element().click()
+    def input_msgCode(self):
+        """输入验证码"""
+        self.ea.clear_input(self.login_page.get_code_input_element(), '4456')
 
-    def click_login_by_qq(self):
-        # 点击QQ登录按钮
-        self.login_page.get_login_by_qq_element().click()
-
-    def click_login_by_wx(self):
-        # 点击微信登录按钮
-        self.login_page.get_login_by_wx_element().click()
-
-    def click_login_by_sina(self):
-        # 点击新浪微博登录按钮
-        self.login_page.get_login_by_sina_element().click()
-
-    def click_skip(self):
-        # 点击跳过按钮
-        self.login_page.get_skip_element().click()
-
-    def click_back(self):
-        # 点击左上角返回按钮
-        self.login_page.get_back_element().click()
-
-    def get_fail_toast(self, message):
-        # 获取toast，根据返回信息进行反数据,信息不能为空  用户名或密码验证失败  密码至少6位
-        toast_element = self.login_page.get_toast_element(message)
-        if toast_element:
-            return True
-        else:
-            return False
+    def click_login_btn(self):
+        """点击登录按钮"""
+        self.ea.click(self.login_page.get_login_btn_element())
