@@ -51,3 +51,9 @@ class GetByLocal:
         else:
             raise NameError("Please enter the correct targeting elements,'id','name','class','xpath'.")
         return element
+
+    def get_toast_element(self, message):
+        """获取toast"""
+        toast_element = ("xpath", "//*[contains(@text," + message + ")]")
+        # 找10秒钟，每0.1秒找一次，找到元素为止
+        return WebDriverWait(self.driver, 10, 0.1).until(EC.presence_of_element_located(toast_element))
