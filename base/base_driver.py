@@ -28,13 +28,14 @@ class BaseDriver:
         try:
             driver = webdriver.Remote('http://localhost:' + port + '/wd/hub', capabilities)
             logger.info(
-                "{0} Start Android device <{1}>, Spend {2} seconds".format(success, device, time.time() - start_t))
+                "{0} Start Android device <{1}>, Spend {2} seconds".format(success, device,
+                                                                           round(time.time() - start_t, 2)))
             time.sleep(10)
             return driver
         except Exception:
             logger.info(
                 "{0} Unable to Start Android device <{1}>, Spend {2} seconds".format(fail, device,
-                                                                                     time.time() - start_t))
+                                                                                     round(time.time() - start_t, 2)))
             raise
 
     def ios_driver(self):
