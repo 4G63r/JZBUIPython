@@ -9,6 +9,10 @@ class LoginHandle:
         self.login_page = LoginPage(driver)
         self.ea = ElementAction(driver)
 
+    def click_close_btn(self):
+        """点击登录注册弹框上面的关闭按钮"""
+        self.ea.click(self.login_page.get_close_btn_element())
+
     def input_phone(self):
         """输入手机号"""
         self.ea.clear_input(self.login_page.get_phone_input_element(), '13439075603')

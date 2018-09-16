@@ -3,8 +3,8 @@ from appium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from util.get_by_local import GetByLocal
-from debug.business_d import MineBusiness
-from page.mine_page import MinePage
+from handle.login_handle import LoginHandle
+from handle.mine_handle import MineHandle
 
 
 def get_driver():
@@ -12,9 +12,9 @@ def get_driver():
     capabilities = {
         "platformName": "Android",
         # "automationName": "UiAutomator2",
-        # "deviceName": "192.168.56.101:5555",
+        "deviceName": "192.168.56.101:5555",
         # "deviceName": "83e54a4c384e4a31",
-        "deviceName": "ac05b72c",
+        # "deviceName": "ac05b72c",
         "app": "/Volumes/SAMSUNG/FF_RUSH/jiazhangbang/data/JZB_7.0.8-website-release.apk",
         # "appWaitActivity": "com.eduu.bang.app.SplashActivity",  # 需要等待切换activity(真机常见问题)
         "noReset": "true",  # 不用每次启动都重置应用
@@ -137,7 +137,6 @@ def get_webview():
 # toast获取
 def get_toast():
     driver.find_element_by_id('com.eduu.bang:id/btnEduuLogin').click()  # 不输入内容点击登录按钮
-    driver.find_element_by_class_name()
     toast_element = ("xpath", "//*[contains(@text,'信息不能为空')]")
     # 找10秒钟，每0.1秒找一次，找到元素为止
     print('toast元素为：', WebDriverWait(driver, 10, 0.1).until(EC.presence_of_element_located(toast_element)))
@@ -145,12 +144,15 @@ def get_toast():
 
 driver = get_driver()  # 全局
 # countdown_time()
-time.sleep(6)
-# m1 = MineBusiness(driver)
-m2 = MinePage(driver)
-print(m2.get_mine_tab_element())
-m2.get_mine_tab_element().click()
-m2.get_user_image_element().click()
+time.sleep(8)
+h = MineHandle(driver)
+# l = LoginHandle(driver)
+# l.input_phone()
+# l.click_sendMsgCode_btn()
+# l.input_msgCode()
+# l.click_login_btn()
+if h.get_user_name() == '游客':
+    print(1111)
 
 time.sleep(3)
 driver.quit()

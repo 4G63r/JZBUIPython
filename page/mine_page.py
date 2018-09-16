@@ -1,5 +1,4 @@
 import time
-
 from util.get_by_local import GetByLocal
 from util.read_ini import ReadIni
 from log.print_log import Log
