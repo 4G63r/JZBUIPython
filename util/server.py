@@ -1,9 +1,13 @@
 import time
-
 from util.dos_cmd import DosCmd
 from util.port import Port
 import multiprocessing
 from util.write_user_command import WriteUserCommand
+from log.print_log import Log
+
+logger = Log()
+success = "SUCCESS   "
+fail = "FAIL   "
 
 
 class Server:
@@ -19,7 +23,7 @@ class Server:
         if len(result_list) >= 1:
             for i in result_list:
                 if 'daemon' in i or 'offline' in i or 'unauthorized' in i:
-                    print("❗️❗❗Device Not Found❗❗❗")
+                    logger.info("❗️❗❗Device Not Found❗❗❗")
                     continue
                 devices_list.append(i.split('\t')[0])
             return devices_list
@@ -46,8 +50,8 @@ class Server:
     def start_server(self, i):
         """启动服务"""
         self.start_list = self.create_command_list(i)
-        print(self.start_list)
         self.dos.execute_cmd(self.start_list[0])
+        logger.info("{0} Start Appium Server: {1}".format(success, self.start_list))
 
     def main(self):
         """多线程启动appium"""
@@ -82,15 +86,6 @@ class Server:
         if process_list:
             for i in process_list:
                 self.dos.execute_cmd('kill -9 ' + i)
-                print("---PID " + i + ' node进程清理完成---')
+                logger.info("{0} Appium Process PID {1} completed cleanup".format(success, i))
         else:
-            print("---appium没有启动不需要清理---")
-
-
-if __name__ == '__main__':
-    server = Server()
-    # print(server.get_devices())
-    # print(server.create_port_list(4700))
-    server.main()
-    # print(server.get_process_pid('ps -ef | grep node'))
-    # server.kill_server()
+            logger.info("Appium no startup, no need to clean up")
