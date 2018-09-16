@@ -27,9 +27,3 @@ class Port:
         else:
             print('Failed to connect devices and generate ports...')
             return None
-
-
-if __name__ == '__main__':
-    port = Port()
-    li = [1, 2]
-    print(port.create_port_list(4700, li))
