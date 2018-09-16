@@ -117,10 +117,10 @@ class ElementAction:
 
     def get_size(self):
         """获取屏幕宽和高"""
-        size = self.driver.get_window_size()  # 返回字典{'height': 2560, 'width': 1440}
-        height = size['height']  # y
-        width = size['width']  # x
-        return width, height  # 返回元祖(1440, 2560)
+        size = self.driver.get_window_size()  # {'height': 2560, 'width': 1440}
+        height = size['height']
+        width = size['width']
+        return width, height
 
     def swipe_left(self):
         """向左滑动"""
@@ -160,6 +160,7 @@ class ElementAction:
             self.swipe_left()
         elif direction.lower() == 'right':
             self.swipe_right()
+        logger.info("{0} Swipe to: {1}".format(success, direction))
 
     def js(self, script):
         """执行JavaScript"""

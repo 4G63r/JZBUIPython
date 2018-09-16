@@ -50,8 +50,8 @@ class Server:
     def start_server(self, i):
         """启动服务"""
         self.start_list = self.create_command_list(i)
-        self.dos.execute_cmd(self.start_list[0])
         logger.info("{0} Start Appium Server: {1}".format(success, self.start_list))
+        self.dos.execute_cmd(self.start_list[0])
 
     def main(self):
         """多线程启动appium"""
