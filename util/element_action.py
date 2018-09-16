@@ -7,7 +7,7 @@ fail = "FAIL   "
 
 
 class ElementAction:
-    """元素所有行为"""
+    """元素所有行为操作"""
 
     def __init__(self, driver):
         self.driver = driver
