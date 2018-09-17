@@ -33,6 +33,10 @@ class MineHandle:
         """点击收藏元素"""
         self.ea.click(self.mine_page.get_collect_btn_element())
 
+    def get_collect_count(self):
+        """获取收藏数"""
+        self.ea.get_text(self.mine_page.get_collect_count_element())
+
     def click_notice_btn_element(self):
         """点击消息元素"""
         self.ea.click(self.mine_page.get_notice_btn_element())

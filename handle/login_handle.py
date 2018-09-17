@@ -36,3 +36,7 @@ class LoginHandle:
     def click_login_btn(self):
         """点击登录按钮"""
         self.ea.click(self.login_page.get_login_btn_element())
+
+    def click_back_btn(self):
+        """点击返回按钮"""
+        self.ea.click(self.login_page.get_loginPage_back_element())

@@ -56,6 +56,10 @@ class MinePage:
         """获取收藏元素信息"""
         return self.wait_element('mine_element', 'collect_btn')
 
+    def get_collect_count_element(self):
+        """获取收藏数元素信息"""
+        return self.wait_element('mine_element', 'collect_count')
+
     def get_notice_btn_element(self):
         """获取消息元素信息"""
         return self.wait_element('mine_element', 'notice_btn')
@@ -135,3 +139,49 @@ class MinePage:
     def get_setting_btn_element(self):
         """获取设置元素信息"""
         return self.wait_element('mine_element', 'setting_btn')
+
+    # ----------------------------------------------------------------------
+
+    def get_updatePersonal_element(self):
+        """获取用户资料页修改资料元素信息"""
+        return self.wait_element('secLevel_element', 'update_personal')
+
+    def get_userName_element(self):
+        """获取用户资料页用户名元素信息"""
+        return self.wait_element('secLevel_element', 'user_name')
+
+    def get_threadName_element(self):
+        """获取用户资料页流文案元素信息"""
+        return self.wait_element('secLevel_element', 'thread_name')
+
+    def get_friend_title_element(self):
+        """获取好友页标题元素信息"""
+        return self.wait_element('secLevel_element', 'friend_title')
+
+    def get_recommend_friend_element(self):
+        """获取好友页推荐好友元素信息"""
+        return self.wait_element('secLevel_element', 'recommend_friend')
+
+    def get_agency_element(self):
+        """获取好友页机构元素信息"""
+        return self.wait_element('secLevel_element', 'agency')
+
+    def get_collect_time_element(self):
+        """获取收藏页标题元素信息"""
+        return self.wait_element('secLevel_element', 'collect_time')
+
+    def get_collect_title_element(self):
+        """获取收藏页时间元素信息"""
+        return self.wait_element('secLevel_element', 'collect_title')
+
+    def get_notice_sendLetter_element(self):
+        """获取消息页发信元素信息"""
+        return self.wait_element('secLevel_element', 'notice_send_letter')
+
+    def get_notice_bang_element(self):
+        """获取消息页帮通知元素信息"""
+        return self.wait_element('secLevel_element', 'notice_bang')
+
+    def get_notice_1_element(self):
+        """获取消息页通知元素信息"""
+        return self.wait_element('secLevel_element', 'notice_1')
